@@ -40,7 +40,7 @@
   "alternateName": "Muhidin Gondrong",
   "jobTitle": "Konten Kreator",
   "description": "Konten kreator yang berbagi pengalaman nyata seputar bisnis digital, tools, dan kehidupan sehari-hari. Aktif di Facebook.",
-  "sameAs": ["https://www.facebook.com/"],
+  "sameAs": ["https://facebook.com/Muh1dingondrong"],
   "url": "https://muhidinGondrong.com/"
 }
 </script>
@@ -1501,7 +1501,7 @@ footer::before {
 /* ============================================================
    PERFORMANCE
    ============================================================ */
-#about, #konten, #mengapa, #facebook, #kontak {
+#about, #konten, #mengapa, #facebook, #video-gallery, #kontak {
   content-visibility: auto;
   contain-intrinsic-size: 0 600px;
 }
@@ -1518,6 +1518,239 @@ footer::before {
   }
   .rv, .rv-left, .rv-scale { opacity: 1; transform: none; }
   .hero-name em::after { animation: none; transform: scaleX(1); }
+}
+
+/* ============================================================
+   VIDEO GALLERY SECTION
+   ============================================================ */
+#video-gallery {
+  background: var(--cream-warm);
+  content-visibility: auto;
+  contain-intrinsic-size: 0 600px;
+}
+
+#video-gallery::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -5%;
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, var(--amber-glow-sm) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Featured video */
+.vg-featured {
+  margin-bottom: var(--s-24);
+}
+
+.vg-featured-link {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--divider);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  text-decoration: none;
+  transition: border-color var(--t-base), box-shadow var(--t-base), transform var(--t-spring);
+  position: relative;
+}
+.vg-featured-link:hover {
+  border-color: rgba(200,135,90,0.35);
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(200,135,90,0.1);
+  transform: translateY(-3px);
+}
+.vg-featured-link::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--amber), var(--amber-light));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
+  z-index: 1;
+}
+.vg-featured-link:hover::before { transform: scaleX(1); }
+
+.vg-featured-thumb {
+  width: 100%;
+  aspect-ratio: 16/7;
+  background: var(--cream-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.vg-featured-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.vg-play-badge {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(40,38,31,0.22);
+  transition: background var(--t-base);
+}
+.vg-featured-link:hover .vg-play-badge { background: rgba(40,38,31,0.35); }
+.vg-play-circle {
+  width: 64px; height: 64px;
+  background: #1877F2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(24,119,242,0.45);
+  transition: transform var(--t-spring), box-shadow var(--t-base);
+}
+.vg-featured-link:hover .vg-play-circle {
+  transform: scale(1.1);
+  box-shadow: 0 8px 28px rgba(24,119,242,0.55);
+}
+.vg-thumb-placeholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--cream-deep) 0%, var(--amber-soft) 100%);
+  font-size: 48px;
+}
+
+.vg-featured-meta {
+  padding: var(--s-8) var(--s-10);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-8);
+  flex-wrap: wrap;
+}
+.vg-featured-badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--amber);
+  background: var(--amber-soft);
+  padding: 4px 10px;
+  border-radius: var(--r-full);
+}
+.vg-featured-title {
+  font-family: var(--ff-display);
+  font-size: clamp(15px, 2vw, 18px);
+  font-weight: 600;
+  color: var(--charcoal);
+  line-height: 1.3;
+  flex: 1;
+}
+.vg-featured-date {
+  font-size: 12px;
+  color: var(--text-light);
+  flex-shrink: 0;
+}
+
+/* Video grid */
+.vg-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s-6);
+}
+
+.vg-card {
+  background: var(--surface);
+  border: 1px solid var(--divider);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  text-decoration: none;
+  display: block;
+  position: relative;
+  transition: border-color var(--t-base), box-shadow var(--t-base), transform var(--t-spring);
+}
+.vg-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--amber), var(--amber-light));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
+  z-index: 1;
+}
+.vg-card:hover {
+  border-color: rgba(200,135,90,0.35);
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(200,135,90,0.1);
+  transform: translateY(-3px);
+}
+.vg-card:hover::before { transform: scaleX(1); }
+
+.vg-card-thumb {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: var(--cream-deep);
+  position: relative;
+  overflow: hidden;
+}
+.vg-card-thumb img { width:100%;height:100%;object-fit:cover;display:block; }
+.vg-card-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(40,38,31,0.18);
+  transition: background var(--t-base);
+}
+.vg-card:hover .vg-card-play { background: rgba(40,38,31,0.32); }
+.vg-card-play-dot {
+  width: 40px; height: 40px;
+  background: #1877F2;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 12px rgba(24,119,242,0.4);
+  transition: transform var(--t-spring);
+}
+.vg-card:hover .vg-card-play-dot { transform: scale(1.12); }
+.vg-card-thumb-placeholder {
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+  background: linear-gradient(135deg, var(--cream-deep) 0%, var(--amber-soft) 100%);
+  font-size:28px;
+}
+
+.vg-card-body {
+  padding: var(--s-6) var(--s-8) var(--s-8);
+}
+.vg-card-title {
+  font-family: var(--ff-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--charcoal);
+  line-height: 1.35;
+  margin-bottom: var(--s-2);
+}
+.vg-card-date {
+  font-size: 11px;
+  color: var(--text-light);
+}
+
+/* Gallery header */
+.vg-header {
+  margin-bottom: var(--s-16);
+}
+
+/* Responsive gallery */
+@media (max-width: 1024px) {
+  .vg-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .vg-featured-thumb { aspect-ratio: 16/9; }
+  .vg-grid { grid-template-columns: repeat(2, 1fr); gap: var(--s-4); }
+  .vg-play-circle { width: 48px; height: 48px; }
+}
+@media (max-width: 480px) {
+  .vg-grid { grid-template-columns: 1fr; }
+  .vg-featured-meta { flex-direction: column; align-items: flex-start; gap: var(--s-2); }
 }
 </style>
 </head>
@@ -1891,6 +2124,30 @@ footer::before {
 
   <div class="divider" role="separator" aria-hidden="true"></div>
 
+  <!-- VIDEO GALLERY -->
+  <section id="video-gallery" aria-labelledby="vg-heading">
+    <div class="container-wide">
+
+      <div class="vg-header rv">
+        <span class="eyebrow" lang="id">Video Terbaru</span>
+        <span class="eyebrow" lang="en">Latest Videos</span>
+        <h2 id="vg-heading" class="section-heading" style="font-size:clamp(24px,3.5vw,38px);margin-top:8px;">
+          <span lang="id">Tonton langsung di Facebook.</span>
+          <span lang="en">Watch directly on Facebook.</span>
+        </h2>
+      </div>
+
+      <!-- Featured video — dirender oleh JS dari SITE_CONFIG.content.facebookVideos[0] -->
+      <div class="vg-featured rv d1" id="vg-featured" style="display:none;"></div>
+
+      <!-- Video grid — dirender oleh JS dari SITE_CONFIG.content.facebookVideos[1..] -->
+      <div class="vg-grid rv d2" id="vg-grid" style="display:none;"></div>
+
+    </div>
+  </section>
+
+  <div class="divider" role="separator" aria-hidden="true"></div>
+
   <!-- KONTAK -->
   <section id="kontak" aria-labelledby="kontak-heading">
     <div class="container">
@@ -1979,12 +2236,68 @@ footer::before {
      SITE CONFIG — update data di sini tanpa menyentuh HTML
      ============================================================ */
   var SITE_CONFIG = {
-    whatsapp:      'https://wa.me/6283893378377',
-    whatsappNumber: '+62 838-9337-8377',
-    username:      'Muh1dingondrong',
-    facebookVideos: [
-      'https://www.facebook.com/share/r/1Dy2RaHURL/'
-    ]
+    name:     'Muhidin Gondrong',
+    username: 'Muh1dingondrong',
+    whatsapp: {
+      number: '+62 838-9337-8377',
+      url:    'https://wa.me/6283893378377'
+    },
+    social: {
+      facebookProfile: 'https://facebook.com/Muh1dingondrong',
+      facebookPage:    '',
+      instagram:       '',
+      tiktok:          '',
+      youtube:         ''
+    },
+    content: {
+      facebookVideos: [
+        {
+          id: 5,
+          title: '',
+          url: 'https://www.facebook.com/share/r/18vjxM5c51/',
+          thumbnail: '',
+          publishedAt: '',
+          duration: '',
+          category: ''
+        },
+        {
+          id: 4,
+          title: '',
+          url: 'https://www.facebook.com/share/r/14fULsQmdGJ/',
+          thumbnail: '',
+          publishedAt: '',
+          duration: '',
+          category: ''
+        },
+        {
+          id: 3,
+          title: '',
+          url: 'https://www.facebook.com/share/r/1BdPmaPSTa/',
+          thumbnail: '',
+          publishedAt: '',
+          duration: '',
+          category: ''
+        },
+        {
+          id: 2,
+          title: '',
+          url: 'https://www.facebook.com/share/r/18wWU4FicY/',
+          thumbnail: '',
+          publishedAt: '',
+          duration: '',
+          category: ''
+        },
+        {
+          id: 1,
+          title: '',
+          url: 'https://www.facebook.com/share/r/199EFjvwuZ/',
+          thumbnail: '',
+          publishedAt: '',
+          duration: '',
+          category: ''
+        }
+      ]
+    }
   };
 
   /* ============================================================
@@ -2060,25 +2373,127 @@ footer::before {
   window.toggleLang = toggleLang;
 
   /* ============================================================
+     HELPERS
+     ============================================================ */
+  var FB_ICON_SVG = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>';
+  var PLAY_ICON  = '<svg width="16" height="16" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+  var PLAY_SM    = '<svg width="12" height="12" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+
+  function escAttr(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function thumbHTML(video, isFeatured) {
+    if (video.thumbnail) {
+      return '<img src="' + escAttr(video.thumbnail) + '" alt="' + escAttr(video.title || 'Facebook Video') + '" loading="lazy" decoding="async">';
+    }
+    var size = isFeatured ? '36px' : '22px';
+    return '<div class="' + (isFeatured ? 'vg-thumb-placeholder' : 'vg-card-thumb-placeholder') + '" style="font-size:' + size + '">▶</div>';
+  }
+
+  /* ============================================================
      APPLY SITE CONFIG — hubungkan data ke elemen HTML
      ============================================================ */
   function applyConfig() {
+    var profile = SITE_CONFIG.social.facebookProfile;
+    var waUrl   = SITE_CONFIG.whatsapp.url;
+
     // WhatsApp links
     document.querySelectorAll('a[data-wa]').forEach(function(a) {
-      a.href = SITE_CONFIG.whatsapp;
+      a.href = waUrl;
     });
-    // Facebook video links — pakai video pertama sebagai default CTA
-    var fbUrl = SITE_CONFIG.facebookVideos[0] || '#';
+    // Profile Facebook links (semua kecuali video)
     document.querySelectorAll('a[data-fb]').forEach(function(a) {
-      a.href = fbUrl;
+      a.href = profile;
     });
-    // Footer Facebook link
+    // Footer Facebook link → profile
     document.querySelectorAll('a[data-fb-footer]').forEach(function(a) {
-      a.href = fbUrl;
+      a.href = profile;
     });
   }
 
+  /* ============================================================
+     VIDEO GALLERY RENDERER
+     ============================================================ */
+  function renderVideoGallery() {
+    var videos = SITE_CONFIG.content.facebookVideos;
+    if (!videos || videos.length === 0) return;
+
+    // Deduplicate by URL
+    var seen = {};
+    var unique = [];
+    for (var i = 0; i < videos.length; i++) {
+      if (videos[i].url && !seen[videos[i].url]) {
+        seen[videos[i].url] = true;
+        unique.push(videos[i]);
+      }
+    }
+    if (unique.length === 0) return;
+
+    var featuredEl = document.getElementById('vg-featured');
+    var gridEl     = document.getElementById('vg-grid');
+    if (!featuredEl || !gridEl) return;
+
+    // ── Featured video (index 0) ──
+    var fv = unique[0];
+    var dateHTML = fv.publishedAt
+      ? '<span class="vg-featured-date">' + escAttr(fv.publishedAt) + '</span>'
+      : '';
+    var titleText = fv.title || 'Facebook Video';
+
+    featuredEl.innerHTML =
+      '<a href="' + escAttr(fv.url) + '" target="_blank" rel="noopener noreferrer" class="vg-featured-link" aria-label="' + escAttr(titleText) + ' (tab baru)">' +
+        '<div class="vg-featured-thumb">' +
+          thumbHTML(fv, true) +
+          '<div class="vg-play-badge" aria-hidden="true">' +
+            '<div class="vg-play-circle">' + PLAY_ICON + '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="vg-featured-meta">' +
+          '<span class="vg-featured-badge">Featured</span>' +
+          '<span class="vg-featured-title">' + escAttr(titleText) + '</span>' +
+          dateHTML +
+        '</div>' +
+      '</a>';
+    featuredEl.style.display = '';
+
+    // ── Grid (index 1 ke atas) ──
+    if (unique.length > 1) {
+      var gridHTML = '';
+      for (var j = 1; j < unique.length; j++) {
+        var v = unique[j];
+        var vTitle = v.title || 'Facebook Video';
+        var vDate  = v.publishedAt
+          ? '<p class="vg-card-date">' + escAttr(v.publishedAt) + '</p>'
+          : '';
+        gridHTML +=
+          '<a href="' + escAttr(v.url) + '" target="_blank" rel="noopener noreferrer" class="vg-card" aria-label="' + escAttr(vTitle) + ' (tab baru)">' +
+            '<div class="vg-card-thumb">' +
+              thumbHTML(v, false) +
+              '<div class="vg-card-play" aria-hidden="true">' +
+                '<div class="vg-card-play-dot">' + PLAY_SM + '</div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="vg-card-body">' +
+              '<p class="vg-card-title">' + escAttr(vTitle) + '</p>' +
+              vDate +
+            '</div>' +
+          '</a>';
+      }
+      gridEl.innerHTML = gridHTML;
+      gridEl.style.display = '';
+    }
+
+    // Observe new elements for reveal animation
+    if ('IntersectionObserver' in window && window._revealObs) {
+      featuredEl.querySelectorAll('.vg-featured-link').forEach(function(el) {
+        window._revealObs.observe(el);
+      });
+    }
+  }
+
   applyConfig();
+  renderVideoGallery();
 
   /* ============================================================
      NAVBAR — scroll state + active link
@@ -2157,6 +2572,7 @@ footer::before {
       threshold: 0.1,
       rootMargin: '0px 0px -40px 0px'
     });
+    window._revealObs = revealObs;
 
     document.querySelectorAll('.rv, .rv-left, .rv-scale').forEach(function (el) {
       revealObs.observe(el);
